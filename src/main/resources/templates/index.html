@@ -30,15 +30,15 @@
                 <h2 class="section-title">Recent Articles</h2>
                 <div class="articles-grid">
                     <article class="article-card" th:each="article : ${articles}">
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a th:href="@{/article/{slug}(slug=${article.slug})}" th:text="${article.title}">Article Title</a>
-                            </h3>
-                            <p class="article-summary" th:text="${article.summary}">Article summary goes here...</p>
-                            <div class="article-meta">
-                                <time class="article-date" th:text="${#temporals.format(article.createdAt, 'MMMM dd, yyyy')}">January 1, 2024</time>
+                        <a th:href="@{/article/{slug}(slug=${article.slug})}" class="article-link">
+                            <div class="article-content">
+                                <h3 class="article-title" th:text="${article.title}">Article Title</h3>
+                                <p class="article-summary" th:text="${article.summary}">Article summary goes here...</p>
+                                <div class="article-meta">
+                                    <time class="article-date" th:text="${#temporals.format(article.createdAt, 'MMMM dd, yyyy')}">January 1, 2024</time>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </article>
                 </div>
             </section>
