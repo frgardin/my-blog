@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felipe Gardin</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="/" class="nav-logo">Felipe Gardin</a>
+                <div class="nav-links">
+                    <a href="/" class="nav-link active">Home</a>
+                    <a href="/about" class="nav-link">About</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="hero">
+                <h1 class="hero-title">Felipe Gardin</h1>
+                <p class="hero-subtitle">Documenting the journey through systems design, performance engineering, and distributed systems</p>
+            </section>
+
+            <section class="articles">
+                <h2 class="section-title">Recent Articles</h2>
+                <div class="articles-grid">
+                    <article class="article-card" th:each="article : ${articles}">
+                        <div class="article-content">
+                            <h3 class="article-title">
+                                <a th:href="@{/article/{slug}(slug=${article.slug})}" th:text="${article.title}">Article Title</a>
+                            </h3>
+                            <p class="article-summary" th:text="${article.summary}">Article summary goes here...</p>
+                            <div class="article-meta">
+                                <time class="article-date" th:text="${#temporals.format(article.createdAt, 'MMMM dd, yyyy')}">January 1, 2024</time>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Software Engineering Blog. Built with Spring Boot and Thymeleaf.</p>
+        </div>
+    </footer>
+</body>
+</html>

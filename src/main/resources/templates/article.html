@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${article.title}">Article Title</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="/" class="nav-logo">Blog</a>
+                <div class="nav-links">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/about" class="nav-link">About</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <article class="article-full">
+                <header class="article-header">
+                    <h1 class="article-title-full" th:text="${article.title}">Article Title</h1>
+                    <div class="article-meta">
+                        <time class="article-date" th:text="${#temporals.format(article.createdAt, 'MMMM dd, yyyy')}">January 1, 2024</time>
+                        <span class="article-updated" th:if="${article.updatedAt != article.createdAt}">
+                            Updated: <span th:text="${#temporals.format(article.updatedAt, 'MMMM dd, yyyy')}">January 1, 2024</span>
+                        </span>
+                    </div>
+                </header>
+                
+                <div class="article-body" th:utext="${article.content}">
+                    Article content goes here...
+                </div>
+            </article>
+            
+            <div class="article-navigation">
+                <a href="/" class="back-link">← Back to Articles</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Software Engineering Blog. Built with Spring Boot and Thymeleaf.</p>
+        </div>
+    </footer>
+</body>
+</html>

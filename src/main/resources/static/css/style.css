@@ -1,0 +1,456 @@
+/* Notion-inspired CSS for Software Engineering Blog */
+
+:root {
+    --notion-bg: #ffffff;
+    --notion-bg-secondary: #f7f6f3;
+    --notion-bg-tertiary: #efedea;
+    --notion-text: #37352f;
+    --notion-text-secondary: #6f6e69;
+    --notion-text-muted: #9b9a97;
+    --notion-border: #e3e2e0;
+    --notion-accent: #2f80ed;
+    --notion-accent-hover: #1c6dd0;
+    --notion-code-bg: #f6f5f4;
+    --notion-code-text: #eb5757;
+    --notion-shadow: rgba(15, 15, 15, 0.05);
+    --notion-shadow-hover: rgba(15, 15, 15, 0.08);
+    --notion-radius: 6px;
+    --notion-radius-lg: 12px;
+    --font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 
+        "Segoe UI", Helvetica, "Apple Color Emoji", Arial, 
+        "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--notion-bg);
+    color: var(--notion-text);
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Header & Navigation */
+.header {
+    border-bottom: 1px solid var(--notion-border);
+    background-color: var(--notion-bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav {
+    height: 65px;
+}
+
+.nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--notion-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.nav-logo:hover {
+    color: var(--notion-accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-link {
+    color: var(--notion-text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 8px;
+    border-radius: var(--notion-radius);
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--notion-text);
+    background-color: var(--notion-bg-secondary);
+}
+
+/* Main Content */
+.main {
+    min-height: calc(100vh - 65px - 80px);
+    background-color: var(--notion-bg-secondary);
+}
+
+/* Hero Section */
+.hero {
+    padding: 96px 0 64px;
+    text-align: center;
+    background-color: var(--notion-bg);
+    border-bottom: 1px solid var(--notion-border);
+}
+
+.hero-title {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--notion-text);
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    color: var(--notion-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Section Headers */
+.section-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    color: var(--notion-text);
+}
+
+/* Articles Grid */
+.articles {
+    padding-bottom: 96px;
+    background-color: var(--notion-bg-secondary);
+}
+
+.articles-grid {
+    display: grid;
+    gap: 24px;
+}
+
+.article-card {
+    background-color: var(--notion-bg);
+    border: 1px solid var(--notion-border);
+    border-radius: var(--notion-radius-lg);
+    padding: 24px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 1px 3px var(--notion-shadow);
+}
+
+.article-card:hover {
+    border-color: var(--notion-accent);
+    box-shadow: 0 2px 8px var(--notion-shadow-hover);
+    transform: translateY(-1px);
+}
+
+.article-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.article-title a {
+    color: var(--notion-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.article-title a:hover {
+    color: var(--notion-accent);
+}
+
+.article-summary {
+    color: var(--notion-text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+    color: var(--notion-text-muted);
+}
+
+.article-date {
+    font-weight: 500;
+}
+
+/* Article Full View */
+.article-full {
+    padding: 96px 0;
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--notion-bg);
+}
+
+.article-header {
+    margin-bottom: 48px;
+    text-align: center;
+    background-color: var(--notion-bg);
+}
+
+.article-title-full {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--notion-text);
+}
+
+.article-body {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--notion-text);
+}
+
+.article-body h1,
+.article-body h2,
+.article-body h3,
+.article-body h4,
+.article-body h5,
+.article-body h6 {
+    font-weight: 600;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+.article-body h1 { font-size: 32px; }
+.article-body h2 { font-size: 28px; }
+.article-body h3 { font-size: 24px; }
+.article-body h4 { font-size: 20px; }
+
+.article-body p {
+    margin-bottom: 16px;
+}
+
+.article-body ul,
+.article-body ol {
+    margin-bottom: 16px;
+    padding-left: 24px;
+}
+
+.article-body li {
+    margin-bottom: 8px;
+}
+
+.article-body blockquote {
+    border-left: 3px solid var(--notion-accent);
+    padding-left: 16px;
+    margin: 24px 0;
+    color: var(--notion-text-secondary);
+    font-style: italic;
+}
+
+.article-body code {
+    background-color: var(--notion-code-bg);
+    color: var(--notion-code-text);
+    padding: 2px 6px;
+    border-radius: var(--notion-radius);
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.article-body pre {
+    background-color: var(--notion-code-bg);
+    padding: 16px;
+    border-radius: var(--notion-radius);
+    margin: 24px 0;
+    overflow-x: auto;
+}
+
+.article-body pre code {
+    background-color: transparent;
+    color: var(--notion-text);
+    padding: 0;
+}
+
+.article-navigation {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--notion-border);
+}
+
+.back-link {
+    color: var(--notion-accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--notion-accent-hover);
+}
+
+/* About Page */
+.about-section {
+    padding: 96px 0;
+    background-color: var(--notion-bg-secondary);
+}
+
+.page-title {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 48px;
+    text-align: center;
+    color: var(--notion-text);
+}
+
+.about-intro {
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--notion-text-secondary);
+    margin-bottom: 48px;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-sections {
+    margin-bottom: 48px;
+}
+
+.about-section-block {
+    margin-bottom: 32px;
+}
+
+.about-section-block h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--notion-text);
+}
+
+.about-section-block p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--notion-text-secondary);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 32px;
+    margin-top: 48px;
+}
+
+.skill-category h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--notion-text);
+}
+
+.skill-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--notion-border);
+    color: var(--notion-text-secondary);
+    transition: color 0.2s ease;
+}
+
+.skill-list li:hover {
+    color: var(--notion-text);
+}
+
+.skill-list li:last-child {
+    border-bottom: none;
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid var(--notion-border);
+    background-color: var(--notion-bg);
+    padding: 32px 0;
+    text-align: center;
+}
+
+.footer p {
+    color: var(--notion-text-muted);
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    .nav-container {
+        padding: 0 16px;
+    }
+    
+    .hero-title {
+        font-size: 40px;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+    }
+    
+    .article-title-full {
+        font-size: 32px;
+    }
+    
+    .article-body {
+        font-size: 16px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .nav-links {
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 64px 0 48px;
+    }
+    
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .article-full {
+        padding: 64px 0;
+    }
+    
+    .about-section {
+        padding: 64px 0;
+    }
+    
+    .page-title {
+        font-size: 32px;
+    }
+}
