@@ -34,6 +34,7 @@ application-*.properties
 application-*.yml
 !application.properties
 !application.yml
+!src/test/resources/application-test.properties
 
 # Logs
 *.log
