@@ -200,6 +200,50 @@ body {
     line-height: 1.6;
 }
 
+
+.hero-compact {
+    margin-top: 28px;
+    padding: 64px 0 48px;
+    border: 1px solid var(--notion-border);
+    border-radius: 18px;
+    background: radial-gradient(circle at top right, rgba(47, 128, 237, 0.14), transparent 45%), var(--notion-bg);
+    box-shadow: 0 18px 38px var(--notion-shadow);
+}
+
+.hero-eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    color: var(--notion-accent);
+    background-color: rgba(47, 128, 237, 0.1);
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+}
+
+.section-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 12px;
+}
+
+.section-title-row .section-title {
+    margin-bottom: 0;
+}
+
+.section-supporting-text {
+    font-size: 14px;
+    color: var(--notion-text-muted);
+    background-color: var(--notion-bg);
+    border: 1px solid var(--notion-border);
+    border-radius: 999px;
+    padding: 6px 12px;
+}
+
 /* Section Headers */
 .section-title {
     font-size: 28px;
@@ -210,6 +254,7 @@ body {
 
 /* Articles Grid */
 .articles {
+    padding-top: 40px;
     padding-bottom: 96px;
     background-color: var(--notion-bg-secondary);
 }
@@ -217,10 +262,11 @@ body {
 /* Search Section */
 .search-section {
     margin-bottom: 48px;
-    background-color: var(--notion-bg);
+    background: linear-gradient(160deg, var(--notion-bg), var(--notion-bg-secondary));
     border: 1px solid var(--notion-border);
-    border-radius: var(--notion-radius-lg);
+    border-radius: 16px;
     padding: 24px;
+    box-shadow: 0 10px 24px var(--notion-shadow);
 }
 
 .search-form {
@@ -378,10 +424,12 @@ body {
 .article-card {
     background-color: var(--notion-bg);
     border: 1px solid var(--notion-border);
-    border-radius: var(--notion-radius-lg);
+    border-radius: 16px;
     padding: 0;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 3px var(--notion-shadow);
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 20px var(--notion-shadow);
+    overflow: hidden;
+    position: relative;
 }
 
 .article-link {
@@ -394,8 +442,17 @@ body {
 
 .article-card:hover {
     border-color: var(--notion-accent);
-    box-shadow: 0 2px 8px var(--notion-shadow-hover);
-    transform: translateY(-1px);
+    box-shadow: 0 16px 30px var(--notion-shadow-hover);
+    transform: translateY(-4px);
+}
+
+.article-kicker {
+    color: var(--notion-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
 .article-title {
@@ -424,10 +481,14 @@ body {
     font-weight: 500;
 }
 
+.article-container {
+    max-width: 1100px;
+}
+
 /* Article Full View */
 .article-full {
     padding: 96px 0;
-    max-width: 700px;
+    max-width: 860px;
     margin: 0 auto;
     background-color: var(--notion-bg);
 }
@@ -447,7 +508,7 @@ body {
 }
 
 .article-body {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.7;
     color: var(--notion-text);
 }
@@ -611,6 +672,120 @@ body {
     border-bottom: none;
 }
 
+
+
+/* Article Page Enhancements */
+.article-shell {
+    padding: 48px 0 96px;
+}
+
+.article-header-card {
+    border: 1px solid var(--notion-border);
+    border-radius: 18px;
+    padding: 36px 28px;
+    background: radial-gradient(circle at top right, rgba(47, 128, 237, 0.12), transparent 45%), var(--notion-bg);
+    box-shadow: 0 16px 36px var(--notion-shadow);
+}
+
+.article-breadcrumb {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--notion-text-muted);
+    margin-bottom: 14px;
+}
+
+.article-meta-enhanced {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.article-divider {
+    color: var(--notion-text-muted);
+}
+
+.article-body-prose {
+    margin-top: 36px;
+    padding: 36px;
+    border: 1px solid var(--notion-border);
+    border-radius: 16px;
+    background-color: var(--notion-bg);
+    box-shadow: 0 8px 24px var(--notion-shadow);
+}
+
+.article-navigation-card {
+    margin: 0 auto;
+    max-width: 860px;
+    text-align: center;
+    border: 1px solid var(--notion-border);
+    border-radius: 12px;
+    background-color: var(--notion-bg);
+    box-shadow: 0 6px 16px var(--notion-shadow);
+    padding: 18px;
+}
+
+/* About Page Enhancements */
+.about-hero-card {
+    text-align: center;
+    border: 1px solid var(--notion-border);
+    border-radius: 18px;
+    background: radial-gradient(circle at top right, rgba(47, 128, 237, 0.12), transparent 45%), var(--notion-bg);
+    box-shadow: 0 18px 38px var(--notion-shadow);
+    padding: 48px 32px;
+}
+
+.about-highlights-grid {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.about-highlight-card,
+.about-card,
+.skill-card {
+    background-color: var(--notion-bg);
+    border: 1px solid var(--notion-border);
+    border-radius: 14px;
+    box-shadow: 0 8px 22px var(--notion-shadow);
+}
+
+.about-highlight-card {
+    padding: 22px;
+}
+
+.about-highlight-card h3 {
+    margin-bottom: 10px;
+    color: var(--notion-text);
+}
+
+.about-highlight-card p {
+    color: var(--notion-text-secondary);
+    line-height: 1.6;
+}
+
+.about-section-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.about-card {
+    margin-bottom: 0;
+    padding: 24px;
+}
+
+.skills-grid-enhanced {
+    margin-top: 28px;
+    gap: 18px;
+}
+
+.skill-card {
+    padding: 24px;
+}
+
 /* Footer */
 .footer {
     border-top: 1px solid var(--notion-border);
@@ -669,6 +844,18 @@ body {
         font-size: 16px;
     }
     
+    .about-highlights-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-section-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .article-body-prose {
+        padding: 22px;
+    }
+
     .skills-grid {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -682,6 +869,10 @@ body {
 @media (max-width: 480px) {
     .hero {
         padding: 64px 0 48px;
+    }
+
+    .hero-compact {
+        margin-top: 16px;
     }
     
     .hero-title {
@@ -699,6 +890,10 @@ body {
     
     .about-section {
         padding: 64px 0;
+    }
+
+    .about-hero-card {
+        padding: 32px 20px;
     }
     
     .page-title {

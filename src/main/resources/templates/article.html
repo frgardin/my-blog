@@ -29,25 +29,34 @@
     </header>
 
     <main class="main">
-        <div class="container">
-            <article class="article-full">
-                <header class="article-header">
-                    <h1 class="article-title-full" th:text="${article.title}">Article Title</h1>
-                    <div class="article-meta">
-                        <time class="article-date" th:text="${#temporals.format(article.createdAt, 'MMMM dd, yyyy')}">January 1, 2024</time>
-                        <span class="article-updated" th:if="${article.updatedAt != article.createdAt}">
-                            Updated: <span th:text="${#temporals.format(article.updatedAt, 'MMMM dd, yyyy')}">January 1, 2024</span>
-                        </span>
+        <div class="container article-container">
+            <div class="article-shell">
+                <article class="article-full">
+                    <header class="article-header article-header-card">
+                        <p class="article-breadcrumb">Home / Article</p>
+                        <h1 class="article-title-full" th:text="${article.title}">Article Title</h1>
+                        <div class="article-meta article-meta-enhanced">
+                            <time class="article-date" th:text="${#temporals.format(article.createdAt, 'MMMM dd, yyyy')}">January 1, 2024</time>
+                            <span class="article-divider">•</span>
+                            <span>Deep Dive</span>
+                            <span class="article-updated" th:if="${article.updatedAt != article.createdAt}">
+                                <span class="article-divider">•</span>
+                                Updated: <span th:text="${#temporals.format(article.updatedAt, 'MMMM dd, yyyy')}">January 1, 2024</span>
+                            </span>
+                        </div>
+                        <div class="article-tags" th:if="${article.tags != null and !article.tags.empty}">
+                            <span th:each="tag : ${article.tags}" class="article-tag" th:text="${tag}">Tag</span>
+                        </div>
+                    </header>
+
+                    <div class="article-body article-body-prose" th:utext="${article.content}">
+                        Article content goes here...
                     </div>
-                </header>
-                
-                <div class="article-body" th:utext="${article.content}">
-                    Article content goes here...
+                </article>
+
+                <div class="article-navigation article-navigation-card">
+                    <a href="/" class="back-link">← Back to Articles</a>
                 </div>
-            </article>
-            
-            <div class="article-navigation">
-                <a href="/" class="back-link">← Back to Articles</a>
             </div>
         </div>
     </main>
