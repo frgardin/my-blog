@@ -1,0 +1,34 @@
+services:
+  blog-app:
+    build: .
+    ports:
+      - "${APP_PORT:8080}:8080"
+    environment:
+      - DB_HOST=${DB_HOST:mysql}
+      - DB_PORT=${DB_PORT:3306}
+      - DB_NAME=${DB_NAME:blogdb}
+      - DB_USER=${DB_USER:bloguser}
+      - DB_PASSWORD=${DB_PASSWORD:blogpass}
+    depends_on:
+      - mysql
+    networks:
+      - blog-network
+
+  mysql:
+    image: mysql:${MYSQL_VERSION:8.0}
+    environment:
+      MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:root}
+      MYSQL_DATABASE=${DB_NAME:blogdb}
+      MYSQL_USER=${DB_USER:bloguser}
+      MYSQL_PASSWORD=${DB_PASSWORD:blogpass}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - blog-network
+
+volumes:
+  mysql_data:
+
+networks:
+  blog-network:
+    driver: bridge
