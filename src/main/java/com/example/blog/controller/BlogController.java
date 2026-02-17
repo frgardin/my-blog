@@ -1,9 +1,12 @@
 package com.example.blog.controller;
 
+import java.util.Set;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.blog.service.ArticleService;
 
@@ -29,5 +32,13 @@ public class BlogController {
     @GetMapping("/about")
     public String about(Model model) {
         return "about";
+    }
+    
+    @GetMapping("/search")
+    public String search(
+            @RequestParam(required = false) String q,
+            @RequestParam(required = false) Set<String> tags,
+            Model model) {
+        return articleService.search(q, tags, model);
     }
 }

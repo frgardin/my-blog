@@ -15,6 +15,7 @@ public interface ArticleMapper {
                 .slug(article.getSlug())
                 .content(article.getContent())
                 .summary(article.getSummary())
+                .tags(article.getTags())
                 .published(article.isPublished())
                 .createdAt(article.getCreatedAt())
                 .updatedAt(article.getUpdatedAt())

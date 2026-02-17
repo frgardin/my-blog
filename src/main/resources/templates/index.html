@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +8,23 @@
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/theme-toggle.js"></script>
 </head>
+
 <body>
     <header class="header">
         <nav class="nav">
             <div class="nav-container">
-                <a href="/" class="nav-logo">Felipe Gardin</a>
+                <div class="nav-brand">
+                    <a href="/" class="nav-logo">Felipe Gardin</a>
+                    <p class="nav-subtitle">Documenting the journey through systems design, performance engineering, and distributed systems</p>
+                </div>
                 <div class="nav-links">
                     <a href="/" class="nav-link active">Home</a>
                     <a href="/about" class="nav-link">About</a>
                     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
                         <svg class="sun-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                            <path fill-rule="evenodd"
+                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                clip-rule="evenodd"></path>
                         </svg>
                         <svg class="moon-icon" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -30,13 +37,42 @@
 
     <main class="main">
         <div class="container">
-            <section class="hero">
-                <h1 class="hero-title">Felipe Gardin</h1>
-                <p class="hero-subtitle">Documenting the journey through systems design, performance engineering, and distributed systems</p>
-            </section>
-
             <section class="articles">
                 <h2 class="section-title">Recent Articles</h2>
+
+                <!-- Search Section -->
+                <div class="search-section">
+                    <form class="search-form" th:action="@{/search}" method="GET">
+                        <div class="search-input-group">
+                            <input type="text" name="q" class="search-input" placeholder="Search articles..."
+                                th:value="${searchKeyword}">
+                            <button type="submit" class="search-button">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Tags Section -->
+                    <div class="tags-section" th:if="${allTags != null and !allTags.empty}">
+                        <h3 class="tags-title">Tags</h3>
+                        <div class="tags-container">
+                            <a href="/" class="tag-button"
+                                th:classappend="${selectedTags == null or selectedTags.empty} ? 'active'">
+                                All
+                            </a>
+                            <a th:each="tag : ${allTags}" th:href="@{/search(tag=${tag})}" class="tag-button"
+                                th:text="${tag}"
+                                th:classappend="${selectedTags != null and #sets.contains(selectedTags, tag)} ? 'active'">
+                                Tag
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="articles-grid">
                     <article class="article-card" th:each="article : ${articles}">
                         <a th:href="@{/article/{slug}(slug=${article.slug})}" class="article-link">
@@ -44,11 +80,24 @@
                                 <h3 class="article-title" th:text="${article.title}">Article Title</h3>
                                 <p class="article-summary" th:text="${article.summary}">Article summary goes here...</p>
                                 <div class="article-meta">
-                                    <time class="article-date" th:text="${#temporals.format(article.createdAt, 'MMMM dd, yyyy')}">January 1, 2024</time>
+                                    <time class="article-date"
+                                        th:text="${#temporals.format(article.createdAt, 'MMMM dd, yyyy')}">January 1,
+                                        2024</time>
+                                </div>
+                                <div class="article-tags" th:if="${article.tags != null and !article.tags.empty}">
+                                    <span th:each="tag : ${article.tags}" class="article-tag" th:text="${tag}">
+                                        Tag
+                                    </span>
                                 </div>
                             </div>
                         </a>
                     </article>
+                </div>
+
+                <!-- Search Results Message -->
+                <div class="search-results-info" th:if="${searchKeyword}">
+                    <p th:text="'Search results for: ' + ${searchKeyword}">Search results for: keyword</p>
+                    <p th:if="${#lists.isEmpty(articles)}">No articles found matching your search.</p>
                 </div>
             </section>
         </div>
@@ -60,4 +109,5 @@
         </div>
     </footer>
 </body>
+
 </html>

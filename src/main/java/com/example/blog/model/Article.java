@@ -2,6 +2,7 @@ package com.example.blog.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "articles")
@@ -21,6 +22,11 @@ public class Article {
     
     @Column(nullable = false)
     private String summary;
+    
+    @ElementCollection
+    @CollectionTable(name = "article_tags", joinColumns = @JoinColumn(name = "article_id"))
+    @Column(name = "tag")
+    private Set<String> tags;
     
     @Column(nullable = false)
     private LocalDateTime createdAt;
@@ -100,5 +106,13 @@ public class Article {
     
     public void setPublished(boolean published) {
         this.published = published;
+    }
+    
+    public Set<String> getTags() {
+        return tags;
+    }
+    
+    public void setTags(Set<String> tags) {
+        this.tags = tags;
     }
 }

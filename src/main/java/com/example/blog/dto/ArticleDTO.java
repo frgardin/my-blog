@@ -1,6 +1,7 @@
 package com.example.blog.dto;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 public class ArticleDTO {
     private Long id;
@@ -8,6 +9,7 @@ public class ArticleDTO {
     private String slug;
     private String content;
     private String summary;
+    private Set<String> tags;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private boolean published;
@@ -18,6 +20,7 @@ public class ArticleDTO {
         String slug,
         String content,
         String summary,
+        Set<String> tags,
         LocalDateTime createdAt,
         LocalDateTime updatedAt,
         boolean published
@@ -27,6 +30,7 @@ public class ArticleDTO {
         this.slug = slug;
         this.content = content;
         this.summary = summary;
+        this.tags = tags;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.published = published;
@@ -42,6 +46,7 @@ public class ArticleDTO {
         private String slug;
         private String content;
         private String summary;
+        private Set<String> tags;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
         private boolean published;
@@ -71,6 +76,11 @@ public class ArticleDTO {
             return this;
         }
 
+        public Builder tags(Set<String> tags) {
+            this.tags = tags;
+            return this;
+        }
+
         public Builder createdAt(LocalDateTime createdAt) {
             this.createdAt = createdAt;
             return this;
@@ -93,6 +103,7 @@ public class ArticleDTO {
                 slug,
                 content,
                 summary,
+                tags,
                 createdAt,
                 updatedAt,
                 published
@@ -118,6 +129,10 @@ public class ArticleDTO {
 
     public String getSummary() {
         return summary;
+    }
+
+    public Set<String> getTags() {
+        return tags;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -151,6 +166,10 @@ public class ArticleDTO {
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+
+    public void setTags(Set<String> tags) {
+        this.tags = tags;
     }
 
     public void setCreatedAt(LocalDateTime createdAt) {
