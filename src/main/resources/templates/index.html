@@ -55,12 +55,13 @@
                         <div class="search-input-group">
                             <input type="text" name="q" class="search-input" placeholder="Search articles..."
                                 th:value="${searchKeyword}">
-                            <button type="submit" class="search-button">
+                            <button type="submit" class="search-button" title="Search">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
+                                    stroke-width="2" aria-hidden="true">
                                     <circle cx="11" cy="11" r="8"></circle>
                                     <path d="m21 21-4.35-4.35"></path>
                                 </svg>
+                                <span class="sr-only">Search</span>
                             </button>
                         </div>
                     </form>
